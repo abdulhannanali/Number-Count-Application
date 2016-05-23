@@ -1,0 +1,20 @@
+extends ./layouts/layout.pug
+
+block content
+	.container
+		// application's jumbotron
+		.row
+			.panel.panel-primary
+				.panel-heading.text-center
+					.panel-title Magic happens down here
+				.panel-body.text-center
+					form(action="/submitNumber" method="POST")
+						.form-group
+							h1.text-primary(for="numberInput") Enter the number
+							input#numberInput.text-center.form-control(type="number" name="number")
+						.form-group.text-center.center-block
+							include ./includes/recaptcha.pug
+						.form-group
+							input.btn.btn-success.btn-lg.btn-block(type="submit")
+
+

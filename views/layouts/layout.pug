@@ -1,0 +1,28 @@
+doctype html
+html
+	head
+		title=title
+		link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+		link(href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/superhero/bootstrap.min.css" rel="stylesheet")
+		block styles
+		style.
+			.center-block {
+				margin-right: auto;
+				margin-left: auto;
+			}
+			.g-recaptcha {
+				width: 50%;
+				display: block;
+			}
+		script(src="//www.google.com/recaptcha/api.js")
+	body
+		include ../includes/nav.pug
+		block content
+		script(src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js")
+		script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin="anonymous")
+		// user specific scripts
+		block scripts
+		// Fb script include
+		include ../includes/fb-script.pug
+		// Google Analytics Include
+		include ../includes/analytics.pug

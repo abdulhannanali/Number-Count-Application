@@ -1,0 +1,23 @@
+extends ./layouts/layout.pug
+
+block styles
+	style.
+		.badgeGithub {
+			padding-top: 15px;
+			padding-left: 5px;
+		}
+
+block content
+	.jumbotron
+			.container
+				.row
+					h1 Number Count Application!
+					p Number count application counts the #[span.text-success number of times] a word is typed.
+				.row
+					p Github Repo #[a(href="https://github.com/abdulhannanali/Number-Count-Application") Link]
+				.row
+					.fb-save(data-uri="http://f22cb75d.ngrok.io/" data-size="large")
+					iframe.badgeGithub(
+					src="https://ghbtns.com/github-btn.html?user=abdulhannanali&repo=Number-Count-Application&type=star&count=true&size=large"
+					frameborder="0" scrolling="0" width="160px" height="45px"
+					)
