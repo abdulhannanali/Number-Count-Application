@@ -1,0 +1,17 @@
+extends ./layouts/layout.pug
+
+block content
+	.container
+		.row
+			.jumbotron
+				h1 Know about a number
+				p Enter a #[span.text-primary number] to know how many times it has been entered
+				p You can now also access the discussion! WOW! :D 
+		.row
+			.panel.panel-primary
+				.panel-heading
+					.panel-title Enter a number here! To know about it!
+				.panel-body
+					form(action="/get" method="GET")
+						.form-group
+							h1 Enter the number!

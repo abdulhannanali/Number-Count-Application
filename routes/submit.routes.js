@@ -1,5 +1,6 @@
 const recaptcha = require("../lib/recaptcha")(process.env["SERVER_KEY_RECAPTCHA"])
 const router = require("express").Router()
+const redis = require("redis")
 const bodyParser = require("body-parser")
 
 
@@ -18,6 +19,11 @@ module.exports = function (redisClient) {
         res.render("submit", {title: "Submit the numberzzzz!"})
 	})
 
+
+
+
+	
+
 	router.post("/", function (req, res, next) {
 		if (!(req.body && req.body.number && req.body["g-recaptcha-response"])) {
 			return next()
@@ -31,13 +37,21 @@ module.exports = function (redisClient) {
 				if (error) {
 					return next(error)
 				}
-				else if (response && response.success) {
-					number
+				else if (response && response.success && number) {
+					Number.increaseNumber(number, function (error, response) {
+						if (error) {
+							next(error)
+						}
+						else if (response) {
+							res.render("number", {
+								number: number,
+								times: response
+							})
+						}
+					})
 				}
 			})
 		}
-
-
  	})	
 
 

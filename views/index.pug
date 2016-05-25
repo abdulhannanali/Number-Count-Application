@@ -8,16 +8,28 @@ block styles
 		}
 
 block content
-	.jumbotron
-			.container
-				.row
-					h1 Number Count Application!
-					p Number count application counts the #[span.text-success number of times] a word is typed.
-				.row
-					p Github Repo #[a(href="https://github.com/abdulhannanali/Number-Count-Application") Link]
-				.row
-					.fb-save(data-uri="http://f22cb75d.ngrok.io/" data-size="large")
-					iframe.badgeGithub(
-					src="https://ghbtns.com/github-btn.html?user=abdulhannanali&repo=Number-Count-Application&type=star&count=true&size=large"
-					frameborder="0" scrolling="0" width="160px" height="45px"
-					)
+	.row
+		.jumbotron
+				.container
+					.row
+						h1 Number Count Application!
+						p Number count application counts the #[span.text-success number of times] a word is typed.
+					.row
+						p Github Repo #[a(href="https://github.com/abdulhannanali/Number-Count-Application") Link]
+					.row
+						.fb-save(data-uri="http://f22cb75d.ngrok.io/" data-size="large")
+						iframe.badgeGithub(
+						src="https://ghbtns.com/github-btn.html?user=abdulhannanali&repo=Number-Count-Application&type=star&count=true&size=large"
+						frameborder="0" scrolling="0" width="160px" height="45px"
+						)
+	.container
+		.row
+			h1 Things it's for!
+		.row
+			p
+				a(href="/submitNumber")
+					button.btn.btn-primary.btn-block Submit a number!
+		.row
+			p
+				a(href="/getNumber")
+					button.btn.btn-warning.btn-block Know a number!

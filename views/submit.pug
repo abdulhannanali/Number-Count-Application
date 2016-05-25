@@ -2,7 +2,8 @@ extends ./layouts/layout.pug
 
 block content
 	.container
-		// application's jumbotron
+		.row
+			h1 Submit a number to #[span.text-success increase] it's count!
 		.row
 			.panel.panel-primary
 				.panel-heading.text-center
@@ -17,4 +18,24 @@ block content
 						.form-group
 							input.btn.btn-success.btn-lg.btn-block(type="submit")
 
+block scripts
+	script(type="text/javascript").
+		var timeout = 5 * 1000
+		setTimeout(function () {
+			var recaptchas = $(".g-recaptcha")
+			recaptchas.each(function (idx, elem) {
+				var recaptcha = $(elem)
+				if (_.isEmpty(recaptcha.children())) {
+					$(elem).append("<h3 class='recaptchaEmpty'>Captcha not available! Sorry this form won't work!</h3>")
+				}
+			})
+		}, timeout)
+		
 
+block styles
+	style(type="text/css").
+		.recaptchaEmpty {
+			padding: 5px;
+			border: 1px solid black;
+			border-radius: 5px;
+		}

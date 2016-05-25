@@ -1,0 +1,49 @@
+extends ./layouts/layout.pug
+
+block content
+	.container
+		.row
+			.jumbotron
+				h1 Submitted! ayyy!
+				p
+					a#tweetLink
+						button.btn.btn-primary Tweet to spread!
+					a#fbLink
+						button.btn.btn-success Fb share to spread! 
+		.row
+			h1 #[span.text-primary #{number}] has been entered #[span.text-success #{times} #{times > 1 ? "times": "time"}]
+
+block scripts
+	script(type="text/javascript").
+		var tweetEndpoint = "https://twitter.com/intent/tweet"
+		var facebookEndpoint = "https://www.facebook.com/sharer/sharer.php?u="
+
+		var number = #{number};
+		var times = #{times};
+		var origin = window.location.origin;
+
+		var tweetLink = $("#tweetLink")
+		var fbLink = $("#fbLink")
+
+		var intent = tweetEndpoint + "?text=" + "I submitted " + number + " in Number Count App. Submit a number here " + window.location.href
+		var facebookLink = facebookEndpoint + window.location.origin + "/getNumber?number=#{number}"
+
+		if (window && window.open) {
+			tweetLink.click(function (event) {
+				event.preventDefault()	
+				window.open(intent, "TweetNumberCountApp", "width=768,height=600")
+			})	
+
+			fbLink.click(function (event) {
+				event.preventDefault()
+				window.open(facebookLink, "fbShareApp", "width=768,height=600")
+			})
+		}
+		else {
+			tweetLink.attr("href", intent)
+			tweetLink.attr("target", "_blank")	
+
+			fbLink.attr("href", facebookLink)
+			fbLink.attr("target", "_blank")
+		}
+
